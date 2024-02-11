@@ -1,19 +1,27 @@
 from xlwt import Workbook
 import pandas as pd
 
+# Define the filename of the Excel file to be parsed
 filename = 'forParsing_task.xls'
 
 # Open the file and read its contents
 with open(filename, 'r') as file:
     data = file.readlines()
 
+# Create a new Excel workbook
 xldoc = Workbook()
+
+# Add a new sheet to the workbook
 sheet = xldoc.add_sheet("Sheet1", cell_overwrite_ok=True)
 
+# Iterate over each line in the data read from the file
 for i, row in enumerate(data):
+    # Split each row by tabs and iterate over the values
     for j, val in enumerate(row.replace('\n', '').split('\t')):
+        # Write each value to the appropriate cell in the Excel sheet
         sheet.write(i, j, val)
     
+# Save the Excel workbook with the parsed data
 xldoc.save('myexcel.xls')
 
 # Define the values that indicate rows to be excluded
