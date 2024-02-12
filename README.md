@@ -11,6 +11,9 @@ This Python script is designed to recover data from a potentially corrupt Excel 
 7. **Setting Column Names**: Sets column names for the parsed data.
 8. **Saving to CSV**: Saves the sanitized data to a CSV file.
 
+## Python Version
+- Python 3.8.10
+
 ## Usage
 
 1. **Install Dependencies**: Ensure you have the required dependencies installed from requirements.txt. You can install them using pip:

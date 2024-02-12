@@ -20,7 +20,7 @@ for i, row in enumerate(data):
     for j, val in enumerate(row.replace('\n', '').split('\t')):
         # Write each value to the appropriate cell in the Excel sheet
         sheet.write(i, j, val)
-    
+
 # Save the Excel workbook with the parsed data
 xldoc.save('myexcel.xls')
 
@@ -31,7 +31,8 @@ exclude_values = ['Customer', 'Code', 'Name', 'City']
 df = pd.read_excel("myexcel.xls", header=None)
 
 # Filter out rows that contain the exclude values
-df = df[~df.apply(lambda row: any(val in str(cell) for cell in row for val in exclude_values), axis=1)]
+df = df[~df.apply(lambda row: any(val in str(cell)
+                  for cell in row for val in exclude_values), axis=1)]
 
 # Filter out rows that have multiple "-" as content
 df = df[~df.apply(lambda row: row.str.count('-').sum() > 1, axis=1)]
@@ -50,7 +51,8 @@ df = df[df.apply(lambda row: header_row not in str(row), axis=1)]
 filtered_df = df[0].str.strip().str.strip("|").str.split("|", expand=True)
 
 # Define the column names directly
-header_columns = ["Stat", "Account", "No", "Date", "Net due dt", "LC amnt", "DD", "CCAr", "PayT", "Type"]
+header_columns = ["Stat", "Account", "No", "Date",
+                  "Net due dt", "LC amnt", "DD", "CCAr", "PayT", "Type"]
 
 # Set the column names
 filtered_df.columns = header_columns
